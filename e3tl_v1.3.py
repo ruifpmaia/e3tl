@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[15]:
+# In[35]:
 
 
 """
@@ -21,22 +21,22 @@ import ipywidgets as widgets
 from ipywidgets import interactive
 
 
-# In[16]:
+# In[36]:
 
 Image("img/transform_detail.png")
 logfn = "e3tl_execution_" + "{:%d%m%Y_%H%M%S}".format(datetime.now())
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', filename=logfn + '.txt', level=logging.DEBUG)
 
 ALSFRS_Input = 'Tabela_Geral_09_2011_ALS-FRS.csv'
-ALSFRS_MetadataMap_JSON = 'Metadata Map.json'
-ALSFRS_ValidationRules_JSON = 'Validation Rules.json'
+ALSFRS_SplitRules_JSON = 'ALSFRS_SplitRules.json'
+ALSFRS_SemanticRules_JSON = 'ALSFRS_SemanticRules.json'
 
 
 Demographics_Input = 'Tabela_Geral_09_2011_Demographics.csv'
-Demographics_MetadataMap_JSON = 'Demographics Metadata Map.json'
-Demographics_ValidationRules_JSON = 'Demographics Validation Rules.json'
+Demographics_SplitRules_JSON = 'Demographics_SplitRules.json'
+Demographics_SemanticRules_JSON = 'Demographics_SemanticRules.json'
 
-JoinRules_JSON = 'Join Rules.json' 
+JoinRules_JSON = 'JoinRules.json' 
 data_dir = '..\\..\\'
 
 fields_columns = ['Input File', 'Output File', 'Input Fields', 'Output Fields', 'Input Rows', 'Output Rows']
@@ -47,7 +47,7 @@ validation_columns = ['Input File', 'Field', 'Validation', 'Ok', 'Error']
 validation_df = pd.DataFrame(data=None, columns=validation_columns)
 
 
-# In[3]:
+# In[37]:
 
 #Create a new function:
 def num_missing(x):
@@ -84,17 +84,17 @@ def displayTransparencyReport():
     global entries_df
     global validation_df
     display(HTML('<h1>E3TL Transparency Summary</h1>'))
-    display(HTML('<h2>Field Mapping</h2>'))
+    display(HTML('<h2>Row Split</h2>'))
     display(fields_df)
     display(HTML('<h2>Semantic Validation</h2>'))
     display(semantic_df)
-    display(HTML('<h2>Join Data</h2>'))
+    display(HTML('<h2>Data Join</h2>'))
     display(validation_df)
 
 
-# In[4]:
+# In[38]:
 
-def FieldMapping(in_data_fn, in_aux_file):
+def RowSplit(in_data_fn, in_aux_file):
     in_file = data_dir + in_data_fn
     in_df = pd.read_csv(in_file, encoding='iso-8859-1', header=0)
     logging.info('Input file [%s] shape Rows:%d Columns:%d' % (in_file, in_df.shape[0], in_df.shape[1]))
@@ -146,7 +146,7 @@ def FieldMapping(in_data_fn, in_aux_file):
     return aux_json['OutFile']
 
 
-# In[5]:
+# In[39]:
 
 def SemanticValidation(in_data_fn, in_aux_file):  
     with open(in_aux_file) as data_file:    
@@ -219,9 +219,9 @@ def SemanticValidation(in_data_fn, in_aux_file):
     
 
 
-# In[6]:
+# In[40]:
 
-def JoinRules(rules):
+def DataJoin(rules):
     with open(rules) as data_file:    
         aux_json = json.load(data_file)
 #    interm_data = pd.read_csv(intermediate_fn, encoding='iso-8859-1', header=0)
@@ -242,43 +242,38 @@ def JoinRules(rules):
     out_df.to_csv(aux_json['OutFile'], index=False)
 
 
-# <h2>1:m Field Mapping</h2>
+# <h2>1:m Row Split</h2>
 
-# In[7]:
+# In[41]:
 
-intermediary_data_fn = FieldMapping(ALSFRS_Input, ALSFRS_MetadataMap_JSON)
+intermediary_data_fn = RowSplit(ALSFRS_Input, ALSFRS_SplitRules_JSON)
 
 
-# In[8]:
+# In[42]:
 
-intermediary_data_fn2 = FieldMapping(Demographics_Input, Demographics_MetadataMap_JSON)
+intermediary_data_fn2 = RowSplit(Demographics_Input, Demographics_SplitRules_JSON)
 
 
 # <h2>Semantic Validation</h2>
 
-# In[9]:
+# In[43]:
 
-SemanticValidation(intermediary_data_fn, ALSFRS_ValidationRules_JSON)
-
-
-# In[10]:
-
-SemanticValidation(intermediary_data_fn2, Demographics_ValidationRules_JSON)
+SemanticValidation(intermediary_data_fn, ALSFRS_SemanticRules_JSON)
 
 
-# <h2>Join Rules</h2>
+# In[44]:
 
-# In[11]:
-
-JoinRules(JoinRules_JSON)
+SemanticValidation(intermediary_data_fn2, Demographics_SemanticRules_JSON)
 
 
-# In[12]:
+# <h2>Data Join</h2>
+
+# In[45]:
+
+DataJoin(JoinRules_JSON)
+
+
+# In[46]:
 
 displayTransparencyReport()
-
-
-# In[ ]:
-
-
 
