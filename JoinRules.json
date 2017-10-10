@@ -1,0 +1,31 @@
+{
+	"OutFile": "ASLFRS_NIV.csv",
+	"FeatureMapping": [
+		{
+			"InputIdx": 0,
+			"InputFile": "ALSFRS_valid.csv",
+			"Name": "Name",
+			"Type": "String",
+			"JoinKey": true
+		},
+		{
+			"InputIdx": 1,
+			"InputFile": "ALSFRS_valid.csv",
+			"Name": "Date",
+			"Type": "Date",
+			"Format": "dd-MM-yyyy"
+		},
+		{
+			"InputIdx": 2,
+			"InputFile": "ALSFRS_valid.csv",
+			"Name": "ALSFRS",
+			"Type": "Double"
+		},
+		{
+			"InputIdx": 12,
+			"InputFile": "Demographics_valid.csv",
+			"Name": "NIV",
+			"Type": "Int"
+		}
+	]
+}

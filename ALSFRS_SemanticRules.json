@@ -1,0 +1,18 @@
+{
+	"OutFile": "ALSFRS_valid.csv",
+	"SemanticRules": [
+		{
+			"InputIdx":0,
+			"NotNull": true,
+			"RegEx": "^[0-9]+$"
+		},
+		{
+			"InputIdx":1,
+			"NotNull": true
+		},
+		{
+			"InputIdx":2,
+			"NotNull": true
+		}
+	]
+}

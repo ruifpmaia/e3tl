@@ -1,0 +1,14 @@
+{
+	"OutFile": "Demographics_valid.csv",
+	"SemanticRules": [
+		{
+			"InputIdx":0,
+			"NotNull": true,
+			"RegEx": "^[0-9]+$"
+		},
+		{
+			"InputIdx":12,
+			"NotNull": true
+		}
+    ]
+}

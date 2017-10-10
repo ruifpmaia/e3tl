@@ -1,0 +1,49 @@
+{
+	"OutFile": "ALSFRS_f.csv",
+	"ExamFeatures": 22,
+	"ExamCountPerRow": 11,
+	"OutputFeatures": 6,
+	"FeatureMapping": [
+		{
+			"InputIdx":0,
+			"OutputIx":0,
+			"StaticIdx": true,
+			"Name": "Name",
+			"Type": "String"
+		},
+		{
+			"InputIdx":1,
+			"OutputIx":1,
+			"StaticIdx": false,
+			"Name": "Date",
+			"Type": "Date",
+			"Format": "%d-%m-%Y"
+		},
+		{
+			"InputIdx":3,
+			"OutputIx":2,
+			"StaticIdx": false,
+               "Name": "ALS-FRS"
+		},		
+          {
+			"InputIdx":4,
+			"OutputIx":3,
+			"StaticIdx": false,
+               "Name": "ALS-FRS-R"
+		},		
+          {
+			"InputIdx":5,
+			"OutputIx":4,
+			"StaticIdx": false,
+               "Name": "ALS-FRSb"
+		},		
+		{
+			"InputIdx":9,
+			"OutputIx":5,
+			"StaticIdx": false,
+			"Name": "R",
+			"Type": "Double",
+			"Format": "##,##"
+		}
+	]
+}

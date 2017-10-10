@@ -1,0 +1,99 @@
+{
+	"OutFile": "Demographics_f.csv",
+	"ExamFeatures": 0,
+	"ExamCountPerRow": 1,
+	"OutputFeatures": 13,
+	"FeatureMapping": [
+		{
+			"InputIdx":0,
+			"OutputIx":0,
+			"StaticIdx": true,
+			"Name": "Name",
+			"Type": "String"
+		},
+		{
+			"InputIdx":2,
+			"OutputIx":1,
+			"StaticIdx": true,
+			"Name": "Gender",
+			"Type": "String"
+		},
+      {
+			"InputIdx":7,
+			"OutputIx":2,
+			"StaticIdx": true,
+			"Name": "BMI",
+			"Type": "String"
+		},
+      {
+			"InputIdx":34,
+			"OutputIx":3,
+			"StaticIdx": true,
+			"Name": "MND",
+			"Type": "String"
+		},
+      {
+			"InputIdx":39,
+			"OutputIx":4,
+			"StaticIdx": true,
+			"Name": "Age at onset",
+			"Type": "String"
+		},
+       {
+			"InputIdx":43,
+			"OutputIx":5,
+			"StaticIdx": true,
+			"Name": "El Escorial reviewed criteria",
+			"Type": "String"
+		},
+        {
+			"InputIdx":44,
+			"OutputIx":6,
+			"StaticIdx": true,
+			"Name": "Onset form",
+			"Type": "String"
+		},
+      {
+			"InputIdx":45,
+			"OutputIx":7,
+			"StaticIdx": true,
+			"Name": "Envolved segment - 1st symptoms",
+			"Type": "String"
+		},
+         {
+			"InputIdx":47,
+			"OutputIx":8,
+			"StaticIdx": true,
+			"Name": "Evolution pattern",
+			"Type": "String"
+		},
+      {
+			"InputIdx":48,
+			"OutputIx":9,
+         "StaticIdx": true,
+			"Name": "1st symptoms - 1st visit",
+			"Type": "String"
+		},
+      {
+			"InputIdx":55,
+			"OutputIx":10,
+			"StaticIdx": true,
+			"Name": "Alive_Death_Disappeared",
+			"Type": "String"
+		},              
+    {
+			"InputIdx":56,
+			"OutputIx":11,
+			"StaticIdx": true,
+			"Name": "Date of death_disappearance",
+			"Type": "String"
+		}, 
+    {
+			"InputIdx":61,
+			"OutputIx":12,
+			"StaticIdx": true,
+			"Name": "NIV",
+			"Type": "String"
+		}
+	]
+}
